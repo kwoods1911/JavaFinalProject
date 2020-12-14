@@ -29,7 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Khari Woods
  */
-@Path("/FlowerOrderService/orders")
+@Path("/FlowerOrderService/orders")//KW path for the api call.
 public class FlowerOrderService {
     
     
