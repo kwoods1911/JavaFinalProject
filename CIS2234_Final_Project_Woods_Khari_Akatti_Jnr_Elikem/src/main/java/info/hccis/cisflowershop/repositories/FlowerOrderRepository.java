@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository//KW order repositories.
 public interface FlowerOrderRepository extends CrudRepository<FlowerOrder, Integer> {
    ArrayList<FlowerOrder> findByOrderDate(String orderDate);
    ArrayList<FlowerOrder> findAll();
