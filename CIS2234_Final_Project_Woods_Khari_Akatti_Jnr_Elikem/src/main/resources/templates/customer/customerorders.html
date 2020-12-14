@@ -1,0 +1,51 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container">
+            <h2 class="title is-2 has-text-centered">Customer Report Summary</h2>
+            
+            <div class="table-container">
+                <h5 class="title is-2 has-text-centered">Customer Total Cost: $<span th:text="${totalCost}"></span></h5>
+                <table class="table centered is-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 150px;">ID</th>
+                            <th style="width: 150px;">Customer ID</th>
+                            <th style="width: 150px;">Order Date</th>
+                            <th style="width: 150px;">Welcome Baby Boy</th>
+                            <th style="width: 150px;">Welcome Baby Girl</th>
+                            <th style="width: 150px;">Very Special Delivery</th>
+                            <th style="width: 150px;">Small Stuffed Animal</th>
+                            <th style="width: 150px;">Medium Stuffed Animal</th>
+                            <th style="width: 150px;">Large Stuffed Animal</th>
+                            <th style="width: 150px;">Order Status</th>
+                            <th style="width: 150px;">Total Cost</th>
+                            <th style="width: 150px;">Amount Paid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="flowerOrder : ${flowerOrders}">
+                            <td th:text="${flowerOrder.id}"></td>
+                            <td th:text="${flowerOrder.customerId}"></td>
+                            <td th:text="${flowerOrder.orderDate}"></td>
+                            <td th:text="${flowerOrder.item1}"></td>
+                            <td th:text="${flowerOrder.item2}"></td>
+                            <td th:text="${flowerOrder.item3}"></td>
+                            <td th:text="${flowerOrder.item4}"></td>
+                            <td th:text="${flowerOrder.item5}"></td>
+                            <td th:text="${flowerOrder.item6}"></td>
+                            <td th:text="${flowerOrder.orderStatus}"></td>
+                            <td th:text="${flowerOrder.totalCost}"></td>
+                            <td th:text="${flowerOrder.amountPaid}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

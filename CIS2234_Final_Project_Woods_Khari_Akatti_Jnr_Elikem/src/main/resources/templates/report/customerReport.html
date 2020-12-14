@@ -1,0 +1,37 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+    <nav th:replace="fragments/navHeader :: navbar"></nav>
+    <div class="container">
+        <p>Choose a customer</p>
+            <form th:action="@{/report/submitCustomerReport}" class="form-horizontal">
+                <fieldset>
+                    <table class="table table-striped">
+                        <tr>
+                          <th>Customers</th>
+                            <td>
+                                <select class="form-control" name="customerId" th:name="customerId">
+                                    <option th:each="customer : ${customers}"
+                                            th:value="${customer.id}"
+                                        th:text="${customer.fullName}">
+                                    </option>
+                                </select>
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" class="button"/>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    
+      <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

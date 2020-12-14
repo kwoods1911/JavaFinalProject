@@ -1,0 +1,18 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container">
+            <form th:object="${customer}" action="/export" th:action="@{/export/exportCustomer}" method="post" class="form-horizontal">
+                <fieldset>
+                         <div style="text-align: left;" class="form-actions">
+                        <button class="button" type="submit">Export customer(s)</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

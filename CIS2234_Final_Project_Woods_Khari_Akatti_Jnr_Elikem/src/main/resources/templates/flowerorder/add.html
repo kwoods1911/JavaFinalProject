@@ -1,0 +1,141 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+    <nav th:replace="fragments/navHeader :: navbar"></nav>
+    <div class="container">
+            <form th:object="${flowerOrder}" action="/flowerOrder/addSubmit" th:action="@{/flowerOrder/addSubmit}" method="post" class="form-horizontal">
+                <fieldset>
+                    <p th:text="${message}">message here</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td><input type= "hidden" th:field="${flowerOrder.id}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Customers</th>
+                            <td>
+                               <select th:field="${flowerOrder.customerId}">
+                                    <option th:each="current :${customer}"
+                                            th:value="${current.id}"
+                                            th:text="${current.fullName}"></option>
+                                </select> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Order Date</th>
+                            <td><input type="text" th:field="${flowerOrder.orderDate}"/>
+                                 <ul th:if="${#fields.hasErrors('orderDate')}">
+                                        <li class="error" th:each="err : ${#fields.errors('orderDate')}" th:text="${err}">Invalid order date</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Item 1(Baby Boy Flowers)</th>
+                            <td>
+                                 <select th:field="*{item1}">
+                                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}">
+                                    </option>
+                                </select>
+                                 
+                                 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Item 2 (Baby Girl Flowers)</th>
+                            <td>
+                                 <select th:field="*{item2}">
+                                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}">
+                                    </option>
+                                </select>
+                                 
+                                 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Item 3 (Very Special Delivery Flowers)</th>
+                            <td>
+                                 <select th:field="*{item3}">
+                                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${(i)}" th:text="${i}">
+                                    </option>
+                                </select>
+                                 
+                                 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Item 4 (Small Teddy Bear)</th>
+                            <td>
+                                 <select th:field="*{item4}">
+                                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}">
+                                    </option>
+                                </select>
+                                 
+                                 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Item 5 (Medium Teddy Bear)</th>
+                            <td>
+                                 <select th:field="*{item5}">
+                                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}">
+                                    </option>
+                                </select>
+                                 
+                                 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Item 6 (Large Teddy Bear)</th>
+                            <td>
+                                 
+                                 <select th:field="*{item6}">
+                                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}">
+                                    </option>
+                                </select>
+                            </td>
+
+                                                       
+                                 
+                                 
+                                                     
+                        </tr>
+                        <tr>
+                            <th>Order Status</th>
+                            <td>
+                                
+                              <select th:field="${flowerOrder.orderStatus}">
+                                    <option th:each="current :${orderstatus}"
+                                            th:value="${current.id}"
+                                            th:text="${current.description}"></option>
+                                </select> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Cost</th>
+                            <td><input type="text" th:field="${flowerOrder.totalCost}"/>
+                                 <ul th:if="${#fields.hasErrors('totalCost')}">
+                                        <li class="error" th:each="err : ${#fields.errors('totalCost')}" th:text="${err}">Invalid total cost</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Amount Paid</th>
+                            <td><input type="text" th:field="${flowerOrder.amountPaid}"/>
+                                 <ul th:if="${#fields.hasErrors('amountPaid')}">
+                                        <li class="error" th:each="err : ${#fields.errors('amountPaid')}" th:text="${err}">Amount paid invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                                                
+                     </table>
+                    <div style="text-align: left;" class="form-actions">
+                        <button class="button" type="submit">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    
+      <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

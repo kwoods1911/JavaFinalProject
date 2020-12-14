@@ -1,0 +1,105 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+    <nav th:replace="fragments/navHeader :: navbar"></nav>
+    <div class="container">
+            <form th:object="${customer}" action="/customer/addSubmit" th:action="@{/customer/addSubmit}" method="post" class="form-horizontal">
+                <fieldset>
+                    <p th:text="${message}">message here</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <td><input type= "hidden" th:field="${customer.id}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Customer Type</th>
+                            <td>
+
+                                <select th:field="${customer.customerTypeId}">
+                                    <option th:each="current :${customerType}"
+                                            th:value="${current.id}"
+                                            th:text="${current.description}"></option>
+                                </select>
+
+                                <br/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Full Name</th>
+                            <td><input type="text" th:field="${customer.fullName}"/>
+                                 <ul th:if="${#fields.hasErrors('fullName')}">
+                                        <li class="error" th:each="err : ${#fields.errors('fullName')}" th:text="${err}">Full name invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Address 1</th>
+                            <td><input type="text" th:field="${customer.address1}"/>
+                                 <ul th:if="${#fields.hasErrors('address1')}">
+                                        <li class="error" th:each="err : ${#fields.errors('address1')}" th:text="${err}">Address 1 invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td><input type="text" th:field="${customer.city}"/>
+                                 <ul th:if="${#fields.hasErrors('city')}">
+                                        <li class="error" th:each="err : ${#fields.errors('city')}" th:text="${err}">City invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Province</th>
+                            <td><input type="text" th:field="${customer.province}"/>
+                                 <ul th:if="${#fields.hasErrors('province')}">
+                                        <li class="error" th:each="err : ${#fields.errors('province')}" th:text="${err}">Province invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Postal Code</th>
+                            <td><input type="text" th:field="${customer.postalCode}"/>
+                                 <ul th:if="${#fields.hasErrors('postalCode')}">
+                                        <li class="error" th:each="err : ${#fields.errors('postalCode')}" th:text="${err}">Postal code invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Phone Number</th>
+                            <td><input type="text" th:field="${customer.phoneNumber}"/>
+                                 <ul th:if="${#fields.hasErrors('phoneNumber')}">
+                                        <li class="error" th:each="err : ${#fields.errors('phoneNumber')}" th:text="${err}">Phone number invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Birth Date</th>
+                            <td><input type="text" th:field="${customer.birthDate}"/>
+                                 <ul th:if="${#fields.hasErrors('birthDate')}">
+                                        <li class="error" th:each="err : ${#fields.errors('birthDate')}" th:text="${err}">Birth date invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Loyalty Card</th>
+                            <td><input type="text" th:field="${customer.loyaltyCard}"/>
+                                 <ul th:if="${#fields.hasErrors('loyaltyCard')}">
+                                        <li class="error" th:each="err : ${#fields.errors('loyaltyCard')}" th:text="${err}">Loyalty card invalid</li>
+                                 </ul><br/>
+                            </td>
+                        </tr>
+                        
+                     </table>
+                    <div style="text-align: left;" class="form-actions">
+                        <button class="button" type="submit">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    
+      <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

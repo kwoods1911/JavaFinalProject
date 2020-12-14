@@ -1,0 +1,28 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container">
+            <form th:object="${flowerOrder}" action="/report/orderReport" th:action="@{/report/orderReport}" method="post" class="form-horizontal">
+                <fieldset>
+                    <p th:text="${message}">message here</p>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Order Date</th>
+                            <td><input type="text" th:field="${flowerOrder.orderDate}"/>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <div style="text-align: left;" class="form-actions">
+                        <button class="button" type="submit">Run Report</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

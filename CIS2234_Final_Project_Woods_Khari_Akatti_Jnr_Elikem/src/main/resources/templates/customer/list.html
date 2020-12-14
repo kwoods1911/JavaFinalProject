@@ -1,0 +1,62 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+
+        <div class="container">
+            <h2 class="title is-2 has-text-centered">Customers List&nbsp;</h2>
+            <p><span th:text="${findNameMessage}"></span></p>
+            <p><span th:text="${message}"></span></p>
+            <div class="table-container">
+
+                <a th:href="@{/customer/add}" th:text="Add" class="button"></a>
+                <!--    add some code to show the bookings which are in the model-->
+
+                
+                <table class="table centered is-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 150px;">ID</th>
+                            <th style="width: 150px;">Customer Type ID</th>
+                            <th style="width: 150px;">Full Name</th>
+                            <th style="width: 150px;">Address 1</th>
+                            <th style="width: 150px;">City</th>
+                            <th style="width: 150px;">Province</th>
+                            <th style="width: 150px;">Postal Code</th>
+                            <th style="width: 150px;">Phone Number</th>
+                            <th style="width: 150px;">Birth Date</th>
+                            <th style="width: 150px;">Loyalty Card</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr th:each="customer : ${customers}">
+                            <td th:text="${customer.Id}"></td>
+                            <td th:text="${customer.customerTypeDescription}"></td>
+                            <td th:text="${customer.fullName}"></td>
+                            <td th:text="${customer.address1}"></td>
+                            <td th:text="${customer.city}"></td>
+                            <td th:text="${customer.province}"></td>
+                            <td th:text="${customer.postalCode}"></td>
+                            <td th:text="${customer.phoneNumber}"></td>
+                            <td th:text="${customer.birthDate}"></td>
+                            <td th:text="${customer.loyaltyCard}"></td>
+                            
+                            <td><a th:href="@{/customer/edit(id=${customer.id})}">Edit</a>&nbsp;
+                                <a th:href="@{/customer/delete(id=${customer.id})}">Delete</a>
+                                <a th:href="@{/report/submitCustomerReport(id=${customer.id})}">Orders</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>

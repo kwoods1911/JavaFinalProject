@@ -1,0 +1,61 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="fragments/head :: headerFragment">
+        <title></title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+
+        <div class="container">
+            <h2 class="title is-2 has-text-centered">Flower Order List&nbsp;</h2>
+            
+
+            <div class="table-container">
+
+                <a th:href="@{/flowerOrder/add}" th:text="Add" class="button"></a>
+                <!--    add some code to show the bookings which are in the model-->
+
+                
+                <table class="table centered is-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 150px;">ID</th>
+                            <th style="width: 150px;">Customer ID</th>
+                            <th style="width: 150px;">Item 1</th>
+                            <th style="width: 150px;">Item 2</th>
+                            <th style="width: 150px;">Item 3</th>
+                            <th style="width: 150px;">Item 4</th>
+                            <th style="width: 150px;">Item 5</th>
+                            <th style="width: 150px;">Item 6</th>
+                            <th style="width: 150px;">Order Status</th>
+                            <th style="width: 150px;">Total Cost</th>
+                            <th style="width: 150px;">Amount Paid</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="flowerOrder : ${flowerOrders}">
+                            <td th:text="${flowerOrder.id}"></td>
+                            <td th:text="${flowerOrder.customerId}"></td>
+                            <td th:text="${flowerOrder.item1}"></td>
+                            <td th:text="${flowerOrder.item2}"></td>
+                            <td th:text="${flowerOrder.item3}"></td>
+                            <td th:text="${flowerOrder.item4}"></td>
+                            <td th:text="${flowerOrder.item5}"></td>
+                            <td th:text="${flowerOrder.item6}"></td>
+                            <td th:text="${flowerOrder.orderStatus}"></td>
+                            <td th:text="${flowerOrder.totalCost}"></td>
+                            <td th:text="${flowerOrder.amountPaid}"></td>
+
+                            <td><a th:href="@{/flowerOrder/edit(id=${flowerOrder.id})}">Edit</a>&nbsp;<a
+                                    th:href="@{/flowerOrder/delete(id=${flowerOrder.id})}">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>
